@@ -31,7 +31,7 @@ st.markdown("Restore history with professional-grade AI or experiment with your 
 
 # Sidebar Settings
 st.sidebar.title("🛠️ Model Configuration")
-model_type = st.sidebar.radio("Select AI Engine:", ("Pro Model ", "DIY Model (Custom U-Net)"))
+model_type = st.sidebar.radio("Select AI Engine:", ("Pro Model", "DIY Model (Custom U-Net)"))
 
 if model_type == "DIY Model (Custom U-Net)":
     diy_path = st.sidebar.text_input("Model Path", "colorization_model.keras")
@@ -73,13 +73,13 @@ if img is not None:
             with st.spinner("AI is analyzing textures and intelligently applying colors..."):
                 img_array = np.array(img.convert('RGB'))
                 
-                if model_type == "Pro Model (Pre-trained)":
+                if model_type == "Pro Model":
                     result, error = color_pro_image(img_array)
                     if error:
                         st.error(error)
                     else:
                         st.session_state.colored_result = result
-                else:
+                elif model_type == "DIY Model (Custom U-Net)":
                     diy_model = load_diy_model(diy_path)
                     L, _ = preprocess_array(img_array)
                     L_input = np.expand_dims(L, axis=0)
