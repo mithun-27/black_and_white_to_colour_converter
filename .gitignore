@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+ENV/
+
+# Project Specific
+models/
+synthetic_data/
+temp_input.jpg
+colorized_pro_result.png
+colorized_result.png
+demo_model.keras
+colorization_model.keras
+colorization_model.h5
+my_training_data/
